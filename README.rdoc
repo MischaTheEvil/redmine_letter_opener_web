@@ -1,0 +1,42 @@
+= redmine_letter_opener_web
+
+This is a simple Redmine plugin that functions as a container for the stuff needed to setup +letter_opener_web+ within Redmine.
+
+== Requirements
+
+* Redmine >= 3.2.0.
+
+== Features
+
+* Installs the needed gems (+letter_opener_web+ and +letter_opener+).
+* Adds a route within Redmine to the mounted engine (+/letter_opener+).
+
+== Getting the plugin
+
+A copy of the plugin can be downloaded from {GitHub}[http://github.com/MischaTheEvil/redmine_letter_opener_web].
+
+== Installation and Setup
+
+1. Follow the Redmine plugin installation steps at: http://www.redmine.org/projects/redmine/wiki/Plugins. Make sure the plugin is installed to +plugins/redmine_letter_opener_web+. This plugin does not contain DB migrations, so these steps can be omitted.
+2. Install the needed gems, using <tt>bundle install</tt> (don't forget to modify this command if you've previously setup Redmine without some gem groups).
+3. Modify the email configuration of Redmine in +config/configuration.yml+: set the email +delivery_method+ to +:letter_opener_web+ (or +:letter_opener+ if you have a specific reason to do so).
+4. Restart Redmine.
+5. Do something in Redmine that triggers emails to be sent out.
+6. Browse to <tt>http://your.redmine.host/letter_opener</tt>, and be amazed... ;)
+
+== Notes
+
+* If you are running Redmine under a sub-URI (using Rails' +config.action_controller.relative_url_root+), you might need to do some additional modification/configuration of the +letter_opener_web+ sources. See https://github.com/fgrehm/letter_opener_web/issues/56 for the details.
+* The gems are not installed in the regular +development+ bundler group, instead they are part of +default+.
+* The emails are stored under +tmp/letter_opener+.
+* More information can be found at the sites of:
+  * +letter_opener+: https://github.com/ryanb/letter_opener
+  * +letter_opener_web+: https://github.com/fgrehm/letter_opener_web
+
+== License
+
+This plugin is licensed under the GNU GPL v2. See COPYRIGHT.txt and GPL.txt for details.
+
+== Thanks
+
+Thanks goes out to the authors, maintainers and contributors of +letter_opener_web+ and +letter_opener+ for providing such useful tools.
